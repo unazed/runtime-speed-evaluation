@@ -50,5 +50,6 @@ plt.ylabel("execution time (seconds)")
 plt.xlabel("n iterations")
 plt.legend(
     handles=[Patch(color=elem[2], label=elem[1]) for elem in result_map],
-    loc="best")
+    loc="best"
+  )
 plt.show()
