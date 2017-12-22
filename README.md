@@ -21,7 +21,8 @@ Here's the full output & configuration I had set up to produce that graph:
 {*} How many times should it run? 100
 {*} How many times should each function run individiually? 10
 Setup (run once) {0} 
-Code {0} r=range(2,%%%);[x for x in r if sum(x%d<1 for d in r)<2]               Color {0} red          
+Code {0} r=range(2,%%%);[x for x in r if sum(x%d<1 for d in r)<2]               
+Color {0} red          
 Setup (run once) {1} 
 Code {1} r=range(2,%%%);m=[x*y for x in r for y in r];[x for x in r if not x in m]
 Color {1} green
