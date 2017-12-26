@@ -4,6 +4,11 @@ from matplotlib.patches import Patch
 import math
 
 
+try:
+    input = raw_input
+except NameError:
+    pass
+
 iters = int(input("{*} How many functions would you like to compare? "))
 variable = input("{*} What is the unique replacement string? ")
 startpoint = float(input("{*} What should be the starting integer? "))
@@ -21,10 +26,23 @@ result_map = {
 }
 
 for n in range(iters):
-    setup = input("Setup (run once) {%d} " % n) or "pass"
-    stmt = input("Code {%d} " % n)
+    name = input("Name to be put on legend {%d} " % n)
+    setup = input("Setup (run once) {%d} " % n) + '\n' or "pass"
+    while 1:
+        setup_ = input("Setup (run once) {%d} " % n) + '\n'
+        if not setup_.strip():
+            break
+        setup += setup_
+
+    stmt = input("Code {%d} " % n) + '\n'
+    while 1:
+        stmt_ = input("Code {%d} " % n) + '\n'
+        if not stmt_.strip():
+            break
+        stmt += stmt_
+
     color = input("Color {%d} " % n)
-    result_map[(setup, stmt, color)] = {}
+    result_map[(setup, stmt, color, name)] = {}
 
 for iteration in range(math.ceil(step)):
     for function in result_map:
@@ -49,7 +67,6 @@ for iteration in range(math.ceil(step)):
 plt.ylabel("execution time (seconds)")
 plt.xlabel("n iterations")
 plt.legend(
-    handles=[Patch(color=elem[2], label=elem[1]) for elem in result_map],
-    loc="best"
-  )
+    handles=[Patch(color=elem[2], label=elem[3]) for elem in result_map],
+    loc="best")
 plt.show()
