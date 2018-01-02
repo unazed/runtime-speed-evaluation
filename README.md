@@ -27,3 +27,7 @@ Setup (run once) {1}
 Code {1} r=range(2,%%%);m=[x*y for x in r for y in r];[x for x in r if not x in m]
 Color {1} green
 ```
+
+**NOTE:**
+
+the usage has been changed however the core functions have remained, simply some aliasing for functions and multiline setups/repeated code clauses.
